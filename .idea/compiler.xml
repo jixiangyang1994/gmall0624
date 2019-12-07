@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gmall0624-bean" />
+        <module name="gmall0624-common-util" />
+        <module name="gmall0624-interface" />
+        <module name="gmall0624-manage-service" />
+        <module name="gmall0624-manage-web" />
+        <module name="gmall0624-order-web" />
+        <module name="gmall0624-service-util" />
+        <module name="gmall0624-usermanage" />
+        <module name="gmall0624-web-util" />
+        <module name="web-util" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gmall-common-util" target="1.6" />
+      <module name="gmall-interface" target="1.6" />
+      <module name="gmall0624-bean" target="1.8" />
+      <module name="gmall0624-common-util" target="1.8" />
+      <module name="gmall0624-interface" target="1.8" />
+      <module name="gmall0624-manage-service" target="1.8" />
+      <module name="gmall0624-manage-web" target="1.8" />
+      <module name="gmall0624-order-web" target="1.8" />
+      <module name="gmall0624-parent" target="1.8" />
+      <module name="gmall0624-service-util" target="1.8" />
+      <module name="gmall0624-usermanage" target="1.8" />
+      <module name="gmall0624-web-util" target="1.8" />
+      <module name="service-util" target="1.8" />
+      <module name="web-util" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

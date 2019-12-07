@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gmall0624.iml" filepath="$PROJECT_DIR$/gmall0624.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmall0624-bean/gmall0624-bean.iml" filepath="$PROJECT_DIR$/gmall0624-bean/gmall0624-bean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmall0624-common-util/gmall0624-common-util.iml" filepath="$PROJECT_DIR$/gmall0624-common-util/gmall0624-common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmall0624-interface/gmall0624-interface.iml" filepath="$PROJECT_DIR$/gmall0624-interface/gmall0624-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmall0624-manage-service/gmall0624-manage-service.iml" filepath="$PROJECT_DIR$/gmall0624-manage-service/gmall0624-manage-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmall0624-manage-web/gmall0624-manage-web.iml" filepath="$PROJECT_DIR$/gmall0624-manage-web/gmall0624-manage-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmall0624-order-web/gmall0624-order-web.iml" filepath="$PROJECT_DIR$/gmall0624-order-web/gmall0624-order-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmall0624-parent/gmall0624-parent.iml" filepath="$PROJECT_DIR$/gmall0624-parent/gmall0624-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmall0624-service-util/gmall0624-service-util.iml" filepath="$PROJECT_DIR$/gmall0624-service-util/gmall0624-service-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmall0624-usermanage/gmall0624-usermanage.iml" filepath="$PROJECT_DIR$/gmall0624-usermanage/gmall0624-usermanage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gmall0624-web-util/gmall0624-web-util.iml" filepath="$PROJECT_DIR$/gmall0624-web-util/gmall0624-web-util.iml" />
+    </modules>
+  </component>
+</project>
