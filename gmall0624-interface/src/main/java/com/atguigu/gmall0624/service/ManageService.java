@@ -26,10 +26,10 @@ public interface ManageService {
 
     /**
      * 根据属性查询平台属性数据
-     * @param baseAttrInfo
+     * @param catalog3Id
      * @return
      */
-    List<BaseAttrInfo> getAttrInfoList(BaseAttrInfo baseAttrInfo);
+    List<BaseAttrInfo> getAttrInfoList(String catalog3Id);
 
     /**
      * 添加平台属性值
@@ -50,4 +50,36 @@ public interface ManageService {
      * @return
      */
     BaseAttrInfo getAtterInfo(String attrId);
+
+    /**
+     * 查询列表
+     * @return
+     */
+    List<SpuInfo> getSpuList();
+
+    List<BaseSaleAttr> getBaseSaleAttrList();
+
+    void saveSpuInfo(SpuInfo spuInfo);
+
+    /**
+     * 遍历spu图片
+     * @param spuImage
+     * @return
+     */
+    List<SpuImage> getSpuImageList(SpuImage spuImage);
+
+
+
+    /**
+     * 销售属性回显
+     * @param spuId
+     * @return
+     */
+    List<SpuSaleAttr> getSpuSaleAttrList(String spuId);
+
+    /**
+     * 大保存
+     * @param skuInfo
+     */
+    void saveSkuInfo(SkuInfo skuInfo);
 }

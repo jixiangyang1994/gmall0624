@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="fastdfs-client-java" />
         <module name="gmall0624-bean" />
         <module name="gmall0624-common-util" />
         <module name="gmall0624-interface" />
@@ -20,6 +21,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="fastdfs-client-java" target="1.6" />
       <module name="gmall-common-util" target="1.6" />
       <module name="gmall-interface" target="1.6" />
       <module name="gmall0624-bean" target="1.8" />

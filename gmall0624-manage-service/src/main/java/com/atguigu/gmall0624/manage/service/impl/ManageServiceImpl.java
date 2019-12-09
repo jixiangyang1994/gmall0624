@@ -12,19 +12,46 @@ import java.util.List;
 @Service
 public class ManageServiceImpl implements ManageService {
     @Autowired
-    BaseAttrInfoMapper baseAttrInfoMapper;
+    private BaseAttrInfoMapper baseAttrInfoMapper;
 
     @Autowired
-    BaseAttrValueMapper baseAttrValueMapper;
+    private  BaseAttrValueMapper baseAttrValueMapper;
 
     @Autowired
-    BaseCatalog1Mapper baseCatalog1Mapper;
+    private BaseCatalog1Mapper baseCatalog1Mapper;
 
     @Autowired
-    BaseCatalog2Mapper baseCatalog2Mapper;
+    private BaseCatalog2Mapper baseCatalog2Mapper;
 
     @Autowired
-    BaseCatalog3Mapper baseCatalog3Mapper;
+    private BaseCatalog3Mapper baseCatalog3Mapper;
+
+    @Autowired
+    private   SpuInfoMapper spuInfoMapper;
+
+    @Autowired
+    private BaseSaleAttrMapper baseSaleAttrMapper;
+
+    @Autowired
+    private SpuImageMapper spuImageMapper;
+
+    @Autowired
+    private SpuSaleAttrMapper spuSaleAttrMapper;
+
+    @Autowired
+    private SpuSaleAttrValueMapper spuSaleAttrValueMapper;
+
+    @Autowired
+    private SkuInfoMapper skuInfoMapper;
+
+    @Autowired
+    private SkuImageMapper skuImageMapper;
+
+    @Autowired
+    private SkuSaleAttrValueMapper skuSaleAttrValueMapper;
+
+    @Autowired
+    private SkuAttrValueMapper skuAttrValueMapper;
     @Override
     public List<BaseCatalog1> getCatalog1() {
         return baseCatalog1Mapper.selectAll();
@@ -41,8 +68,8 @@ public class ManageServiceImpl implements ManageService {
     }
 
     @Override
-    public List<BaseAttrInfo> getAttrInfoList(BaseAttrInfo baseAttrInfo) {
-        return baseAttrInfoMapper.select(baseAttrInfo);
+    public List<BaseAttrInfo> getAttrInfoList(String catalog3Id) {
+        return baseAttrInfoMapper.selectBaseAttrInfoListByCatalog3Id(catalog3Id);
     }
 
     @Override
@@ -82,5 +109,98 @@ public class ManageServiceImpl implements ManageService {
         return baseAttrInfo;
     }
 
+    @Override
+    public List<SpuInfo> getSpuList() {
+        return spuInfoMapper.selectAll();
+    }
+
+    @Override
+    public List<BaseSaleAttr> getBaseSaleAttrList() {
+        return baseSaleAttrMapper.selectAll();
+    }
+
+    @Override
+    @Transactional
+    public void saveSpuInfo(SpuInfo spuInfo) {
+       /* spuInfo
+        spuImage
+        spuSaleAttr
+        spuSaleAttrValue
+        */
+       spuInfoMapper.insertSelective(spuInfo);
+        List<SpuImage> spuImageList = spuInfo.getSpuImageList();
+        if(spuImageList!=null && spuImageList.size()>0){
+            for (SpuImage spuImage : spuImageList) {
+
+                spuImage.setSpuId(spuInfo.getId());
+                spuImageMapper.insertSelective(spuImage);
+            }
+        }
+        List<SpuSaleAttr> spuSaleAttrList = spuInfo.getSpuSaleAttrList();
+        if(spuSaleAttrList!=null && spuImageList.size()>0){
+            for (SpuSaleAttr spuSaleAttr : spuSaleAttrList) {
+                spuSaleAttr.setSpuId(spuInfo.getId());
+                spuSaleAttrMapper.insertSelective(spuSaleAttr);
+                List<SpuSaleAttrValue> spuSaleAttrValueList = spuSaleAttr.getSpuSaleAttrValueList();
+                if(checkListIsEmpty(spuSaleAttrValueList)){
+                    for (SpuSaleAttrValue spuSaleAttrValue : spuSaleAttrValueList) {
+                        spuSaleAttrValue.setSpuId(spuInfo.getId());
+                        spuSaleAttrValueMapper.insertSelective(spuSaleAttrValue);
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    @Override
+    public List<SpuImage> getSpuImageList(SpuImage spuImage) {
+        return spuImageMapper.select(spuImage);
+    }
+
+
+
+    @Override
+    public List<SpuSaleAttr> getSpuSaleAttrList(String spuId) {
+        return spuSaleAttrMapper.selectSpuSaleAttrList(spuId);
+    }
+
+    @Override
+    public void saveSkuInfo(SkuInfo skuInfo) {
+        /*
+                            skuInfo
+							skuAttrValue
+							skuSaleAttrValue
+							skuImage
+         */
+        skuInfoMapper.insertSelective(skuInfo);
+        if(checkListIsEmpty(skuInfo.getSkuAttrValueList())){
+            for (SkuAttrValue skuAttrValue :skuInfo.getSkuAttrValueList()) {
+                    skuAttrValue.setSkuId(skuInfo.getId());
+                    skuAttrValueMapper.insertSelective(skuAttrValue);
+            }
+        }
+        if(checkListIsEmpty(skuInfo.getSkuSaleAttrValueList())){
+            for (SkuSaleAttrValue skuSaleAttrValue : skuInfo.getSkuSaleAttrValueList()) {
+                skuSaleAttrValue.setSkuId(skuInfo.getId());
+                skuSaleAttrValueMapper.insertSelective(skuSaleAttrValue);
+            }
+        }
+        if(checkListIsEmpty(skuInfo.getSkuImageList())){
+            for (SkuImage skuImage : skuInfo.getSkuImageList()) {
+                skuImage.setSkuId(skuInfo.getId());
+                skuImageMapper.insertSelective(skuImage);
+            }
+        }
+
+    }
+
+    public <T> boolean checkListIsEmpty(List<T> list){
+        if (list!=null && list.size()>0){
+            return true;
+        }
+        return false;
+    }
 
 }

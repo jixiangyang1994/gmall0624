@@ -31,9 +31,10 @@ public class ManageController {
         return manageService.getCatalog3(baseCatalog3);
     }
     @RequestMapping("attrInfoList")
-    public List<BaseAttrInfo> attrInfoList(BaseAttrInfo baseAttrInfo){
+    public List<BaseAttrInfo> attrInfoList(BaseAttrInfo baseAttrInfo,String catalog3Id){
 
-        return manageService.getAttrInfoList(baseAttrInfo);
+        //return manageService.getAttrInfoList(catalog3Id);
+        return manageService.getAttrInfoList(catalog3Id);
     }
     @RequestMapping("saveAttrInfo")
     public void saveAttrInfo(@RequestBody BaseAttrInfo baseAttrInfo){
@@ -43,7 +44,7 @@ public class ManageController {
     }
     @RequestMapping("getAttrValueList")
     public List<BaseAttrValue> getAttrValueList(String attrId){
-        BaseAttrInfo baseAttrInfo =   manageService.getAtterInfo(attrId);
+        BaseAttrInfo baseAttrInfo = manageService.getAtterInfo(attrId);
 
         return baseAttrInfo.getAttrValueList();
     }
